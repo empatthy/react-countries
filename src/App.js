@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import Loader from './components/Loader';
+import HomePage from './pages/HomePage';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useLoaderData } from 'react-router-dom';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  /* const [countries, setCountries] = useState([]); */
+  /* const [isLoading, setIsLoading] = useState(true); */
+  const countries = useLoaderData();
+
+  /* useEffect(() => {
+    axios
+      .get('https://restcountries.com/v3.1/all?fields=name,flags')
+      .then((response) => {
+        setCountries(response.data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []); */
+
+  return <div>{/* isLoading ? <Loader /> :  */ <HomePage countries={countries} />}</div>;
 }
 
 export default App;
