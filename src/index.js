@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import { createBrowserRouter, RouterProvider, json } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import CountryPage from './pages/CountryPage';
 import ErrorPage from './pages/ErrorPage';
 
@@ -12,7 +12,11 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <ErrorPage />,
     loader: async () => {
-      return fetch('https://restcountries.com/v3.1/all?fields=name,flags');
+      const res = await fetch(`https://restcountries.com/v3.1/all?fields=name,flags`);
+      if (!res.ok) {
+        throw new Response('Something went wrong', { status: res.status });
+      }
+      return res;
     },
   },
   {

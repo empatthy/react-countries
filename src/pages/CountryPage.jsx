@@ -3,7 +3,6 @@ import { Link, useLoaderData } from 'react-router-dom';
 
 function CountryPage() {
   const countryInfo = useLoaderData();
-  console.log(countryInfo);
 
   return (
     <div className="pt-[100px] sm:bg-gray-100 min-h-screen">
@@ -24,7 +23,17 @@ function CountryPage() {
               <span className="font-semibold text-lg">Population:</span> {countryInfo[0].population}
             </p>
             <Link to="/">
-              <button className="border-2 rounded border-gray-700 w-[64px] h-[32px] hover:bg-gray-600 hover:text-white active:bg-gray-700">
+              <button
+                className="
+                  border-2 
+                  rounded 
+                  border-gray-700 
+                  w-[64px] 
+                  h-[32px] 
+                  hover:bg-gray-600 
+                  hover:text-white 
+                  active:bg-gray-700
+                ">
                 Back
               </button>
             </Link>
